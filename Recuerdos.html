@@ -1,1 +1,109 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestros Mejores Momentos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .container h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .container p {
+      font-size: 0.95rem;
+      color: #f8f8f8;
+      margin-bottom: 24px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 14px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-card span {
+      font-size: 1.2rem;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 0.75rem;
+      color: #f3f3f3;
+    }
+
+    @media (max-width: 360px) {
+      .container h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Nuestros Mejores Momentos ✨</h1>
+    <p>Un lugar especial para guardar recuerdos, risas y amor.</p>
+
+    <div class="links">
+      <a href="#" class="link-card">📸 Fotos inolvidables <span>›</span></a>
+      <a href="#" class="link-card">🎥 Videos especiales <span>›</span></a>
+      <a href="#" class="link-card">💬 Mensajes bonitos <span>›</span></a>
+      <a href="#" class="link-card">🎶 Canciones que nos recuerdan <span>›</span></a>
+      <a href="#" class="link-card">📍 Lugares importantes <span>›</span></a>
+    </div>
+
+    <footer>
+      Hecho con ❤️ para nosotros
+    </footer>
+  </div>
+</body>
+</html>
