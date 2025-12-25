@@ -1,11 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nuestros Mejores Momentos</title>
+  <title>Algo Hermoso Está Por Llegar</title>
+
+  <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -16,94 +18,217 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-
-    .container h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
       color: #fff;
     }
 
-    .container p {
-      font-size: 0.95rem;
-      color: #f8f8f8;
-      margin-bottom: 24px;
-    }
-
-    .links {
+    /* ---------- PANTALLA INICIAL ---------- */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #0f0f1a, #000);
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .link-card {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 14px 18px;
-      border-radius: 16px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 10;
+      transition: opacity 1.2s ease;
     }
 
-    .link-card span {
-      font-size: 1.2rem;
+    .overlay.fade-out {
+      opacity: 0;
     }
 
-    .link-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    .start-btn {
+      padding: 18px 36px;
+      border-radius: 40px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff7aa2, #c77dff);
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      animation: breathe 2.5s infinite;
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* ---------- CONTENIDO ---------- */
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
+      animation: shine 6s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 26px;
+    }
+
+    .status {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 16px;
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    .pulse {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #ff7aa2;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 10px;
     }
 
     footer {
-      margin-top: 22px;
+      margin-top: 20px;
       font-size: 0.75rem;
-      color: #f3f3f3;
+      opacity: 0.6;
     }
 
-    @media (max-width: 360px) {
-      .container h1 {
-        font-size: 1.5rem;
-      }
+    /* ---------- BOTÓN REINICIAR ---------- */
+    .reset-btn {
+      margin-top: 18px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .reset-btn:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.1);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>✨ Nuestros Mejores Momentos ✨</h1>
-    <p>Un lugar especial para guardar recuerdos, risas y amor.</p>
 
-    <div class="links">
-      <a href="#" class="link-card">📸 Fotos inolvidables <span>›</span></a>
-      <a href="#" class="link-card">🎥 Videos especiales <span>›</span></a>
-      <a href="#" class="link-card">💬 Mensajes bonitos <span>›</span></a>
-      <a href="#" class="link-card">🎶 Canciones que nos recuerdan <span>›</span></a>
-      <a href="#" class="link-card">📍 Lugares importantes <span>›</span></a>
+  <!-- AUDIO -->
+  <audio id="bgMusic" src="audio/amapolas.mp3" preload="auto"></audio>
+
+  <!-- PANTALLA DE INICIO -->
+  <div class="overlay" id="startScreen">
+    <button class="start-btn" onclick="startExperience()">Descubrir ✨</button>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="container" id="content">
+    <h1>✨ Aún no es el momento ✨</h1>
+
+    <p>
+      Estamos creando algo muy especial.<br>
+      Cada detalle importa, cada recuerdo cuenta.
+    </p>
+
+    <div class="status">
+      <span class="pulse"></span>
+      Proyecto en proceso de creación
     </div>
 
+    <p class="hint">
+      Pronto aquí vivirán nuestros mejores momentos,<br>
+      risas, recuerdos y algo que queremos ver juntos.
+    </p>
+
+    <button class="reset-btn" onclick="resetExperience()">Reiniciar experiencia</button>
+
     <footer>
-      Hecho con ❤️ para nosotros
+      Hecho con intención, paciencia y ❤️
     </footer>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function startExperience() {
+      const music = document.getElementById('bgMusic');
+      const screen = document.getElementById('startScreen');
+      const content = document.getElementById('content');
+
+      music.currentTime = 0;
+      music.volume = 0.6;
+      music.play();
+
+      screen.classList.add('fade-out');
+
+      setTimeout(() => {
+        screen.style.display = 'none';
+        content.style.display = 'block';
+      }, 1200);
+    }
+
+    function resetExperience() {
+      const music = document.getElementById('bgMusic');
+      const screen = document.getElementById('startScreen');
+      const content = document.getElementById('content');
+
+      music.pause();
+      music.currentTime = 0;
+
+      content.style.display = 'none';
+      screen.style.display = 'flex';
+
+      setTimeout(() => {
+        screen.classList.remove('fade-out');
+      }, 50);
+    }
+  </script>
+
 </body>
 </html>
